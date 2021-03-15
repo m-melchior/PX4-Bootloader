@@ -408,6 +408,7 @@ board_init(void)
 	gpio_mode_setup(BOARD_FORCE_BL_PORT, GPIO_MODE_INPUT, BOARD_FORCE_BL_PULL, BOARD_FORCE_BL_PIN);
 #endif
 
+#if !defined(NO_LEDS)
 	/* initialise LEDs */
 	rcc_peripheral_enable_clock(&RCC_AHB1ENR, BOARD_CLOCK_LEDS);
 	gpio_mode_setup(
@@ -423,7 +424,8 @@ board_init(void)
 	BOARD_LED_ON(
 		BOARD_PORT_LEDS,
 		BOARD_PIN_LED_BOOTLOADER | BOARD_PIN_LED_ACTIVITY);
-
+#endif // #if !defined(NO_LEDS)
+	
 	/* enable the power controller clock */
 	rcc_peripheral_enable_clock(&RCC_APB1ENR, RCC_APB1ENR_PWREN);
 }
@@ -460,12 +462,14 @@ board_deinit(void)
 	gpio_mode_setup(BOARD_POWER_PORT, GPIO_MODE_INPUT, GPIO_PUPD_NONE, BOARD_POWER_PIN);
 #endif
 
+#if !defined(NO_LEDS)
 	/* deinitialise LEDs */
 	gpio_mode_setup(
 		BOARD_PORT_LEDS,
 		GPIO_MODE_INPUT,
 		GPIO_PUPD_NONE,
 		BOARD_PIN_LED_BOOTLOADER | BOARD_PIN_LED_ACTIVITY);
+#endif // #if !defined(NO_LEDS)
 
 	/* disable the power controller clock */
 	rcc_peripheral_disable_clock(&RCC_APB1ENR, RCC_APB1ENR_PWREN);
@@ -695,6 +699,7 @@ flash_func_read_sn(uint32_t address)
 	return *(uint32_t *)(address + UDID_START);
 }
 
+#if !defined(NO_LEDS)
 void
 led_on(unsigned led)
 {
@@ -736,6 +741,12 @@ led_toggle(unsigned led)
 		break;
 	}
 }
+
+#else // #if !defined(NO_LEDS)
+void led_on(unsigned led){}
+void led_off(unsigned led){}
+void led_toggle(unsigned led){}
+#endif // #if !defined(NO_LEDS)
 
 /* we should know this, but we don't */
 #ifndef SCB_CPACR

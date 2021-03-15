@@ -1315,6 +1315,29 @@
  * # define BOARD_FORCE_BL_PULL            GPIO_PUPD_PULLUP
 */
 
+/****************************************************************************
+ * TARGET_HW_SIMTOO_MOMENT
+ ****************************************************************************/
+#elif  defined(TARGET_HW_SIMTOO_MOMENT)
+
+# define APP_LOAD_ADDRESS               0x08004000
+# define BOOTLOADER_DELAY               5000
+# define BOARD_MOMENT
+# define INTERFACE_USB                  1
+# define INTERFACE_USART                0
+# define USBDEVICESTRING                "Simtoo Moment BL"
+# define USBPRODUCTID                   0x0016 // todo: recheck, needs to match PX4-Autopilot/boards/simtoo/moment/nuttx-config/nsh/defconfig
+
+# define BOARD_TYPE                     100 // todo: recheck, must match PX4-Autopilot/boards/simtoo/moment/firmware.prototype
+# define BOARD_FLASH_SECTORS            11
+# define BOARD_FLASH_SIZE               (1024 * 1024)
+
+# define OSC_FREQ                       24
+
+# define NO_LEDS						1
+
+# define USBMFGSTRING                   "Simtoo"
+
 #else
 # error Undefined Target Hardware
 #endif

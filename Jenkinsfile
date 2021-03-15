@@ -40,6 +40,7 @@ pipeline {
                      "px4fmuv5x_bl",
                      "px4io_bl",
                      "px4iov3_bl",
+					 "simtoo_moment_bl",
                      "smartap_pro_bl",
                      "tapv1_bl",
                      "uvify_core_bl",

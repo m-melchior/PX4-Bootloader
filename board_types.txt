@@ -35,7 +35,7 @@ TARGET_HW_FMUK66_V3                    28
 TARGET_HW_AV_X_V1                      29
 TARGET_HW_FMUK66_E                     30
 TARGET_HW_FMURT1062-V1                 31
-
+TARGET_HW_SIMTOO_MOVE				100
 
 Reserved  PX4 [BL] FMU v5X.x           51
 Reserved "PX4 [BL] FMU v6.x"           52
