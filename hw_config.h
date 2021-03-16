@@ -1325,7 +1325,7 @@
 # define BOARD_MOMENT
 # define INTERFACE_USB                  1
 # define INTERFACE_USART                0
-# define USBDEVICESTRING                "Simtoo Moment BL"
+# define USBDEVICESTRING                "Moment BL"
 # define USBPRODUCTID                   0x0016 // todo: recheck, needs to match PX4-Autopilot/boards/simtoo/moment/nuttx-config/nsh/defconfig
 
 # define BOARD_TYPE                     100 // todo: recheck, must match PX4-Autopilot/boards/simtoo/moment/firmware.prototype
